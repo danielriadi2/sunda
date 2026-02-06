@@ -1,0 +1,1473 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ulangan Harian Sejarah - Hindu-Buddha & Kerajaan Sunda</title>
+    <link rel="icon" type="image/x-icon" href="logo.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a237e 0%, #283593 50%, #3949ab 100%);
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            padding: 30px;
+        }
+
+        .header {
+            text-align: center;
+            padding-bottom: 25px;
+            border-bottom: 3px solid #1a237e;
+            margin-bottom: 30px;
+        }
+
+        .school-logo {
+            max-width: 120px;
+            height: auto;
+            margin-bottom: 15px;
+        }
+
+        .school-name {
+            color: #1a237e;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .school-location {
+            color: #5c6bc0;
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            background-color: #1a237e;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 25px 0;
+            text-align: center;
+            font-size: 22px;
+        }
+
+        .info-box {
+            background-color: #e8eaf6;
+            border-left: 5px solid #3949ab;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+
+        .info-box ul {
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+
+        .info-box li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .warning-box {
+            background-color: #fff8e1;
+            border: 2px solid #ffb300;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+
+        .warning-box h3 {
+            color: #ff6f00;
+            margin-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #1a237e;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #c5cae9;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: #3949ab;
+            outline: none;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .checkbox-container input {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(to right, #1a237e, #3949ab);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(57, 73, 171, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(57, 73, 171, 0.4);
+            background: linear-gradient(to right, #3949ab, #1a237e);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn-start {
+            width: 100%;
+            padding: 18px;
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+        .btn-nav {
+            padding: 12px 25px;
+            margin: 0 10px;
+        }
+
+        .btn-finish {
+            background: linear-gradient(to right, #388e3c, #4caf50);
+            box-shadow: 0 4px 15px rgba(56, 142, 60, 0.3);
+        }
+
+        .btn-finish:hover {
+            background: linear-gradient(to right, #4caf50, #388e3c);
+            box-shadow: 0 6px 20px rgba(56, 142, 60, 0.4);
+        }
+
+        .btn-disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+        }
+
+        .btn-disabled:hover {
+            transform: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            background: #cccccc;
+        }
+
+        .question-container {
+            display: none;
+        }
+
+        .timer-container {
+            background-color: #1a237e;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .question-number {
+            background-color: #3949ab;
+            color: white;
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 50px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .question-text {
+            font-size: 20px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: 10px;
+        }
+
+        .options-container {
+            margin-bottom: 30px;
+        }
+
+        .option {
+            display: block;
+            padding: 18px 20px;
+            margin-bottom: 12px;
+            background-color: #e8eaf6;
+            border: 2px solid #c5cae9;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 17px;
+        }
+
+        .option:hover {
+            background-color: #c5cae9;
+            transform: translateX(5px);
+        }
+
+        .option.selected {
+            background-color: #3949ab;
+            color: white;
+            border-color: #1a237e;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .question-indicators {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .indicator {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #e0e0e0;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .indicator.answered {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        .indicator.current {
+            background-color: #3949ab;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .results-container {
+            display: none;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .results-title {
+            color: #1a237e;
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        .score-circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: conic-gradient(#4caf50 0% 70%, #ff9800 70% 90%, #f44336 90% 100%);
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .score-inner {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .score-value {
+            font-size: 48px;
+            font-weight: 700;
+            color: #1a237e;
+        }
+
+        .score-label {
+            font-size: 18px;
+            color: #5c6bc0;
+        }
+
+        .results-details {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .result-box {
+            background-color: #e8eaf6;
+            padding: 25px;
+            border-radius: 15px;
+            min-width: 200px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .result-box h3 {
+            color: #1a237e;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .result-value {
+            font-size: 36px;
+            font-weight: 700;
+            color: #3949ab;
+        }
+
+        .result-label {
+            font-size: 16px;
+            color: #5c6bc0;
+            margin-top: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+            color: #757575;
+            font-size: 14px;
+        }
+
+        .fullscreen-warning {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            display: none;
+            flex-direction: column;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .fullscreen-warning h2 {
+            color: #ff5252;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        .fullscreen-warning p {
+            font-size: 20px;
+            max-width: 600px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .cheating-detected {
+            background-color: #d32f2f;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-weight: 600;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10000;
+            display: none;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media print {
+            body {
+                background: white !important;
+            }
+            
+            .container {
+                box-shadow: none !important;
+                max-width: 100% !important;
+            }
+            
+            .btn, .navigation, .question-indicators, .timer-container {
+                display: none !important;
+            }
+            
+            .question-container, .results-container {
+                display: block !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .school-name {
+                font-size: 20px;
+            }
+            
+            .school-location {
+                font-size: 16px;
+            }
+            
+            .section-title {
+                font-size: 20px;
+                padding: 12px;
+            }
+            
+            .btn-nav {
+                padding: 10px 20px;
+                margin: 0 5px;
+            }
+            
+            .results-details {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Peringatan Kecurangan -->
+    <div id="cheating-warning" class="cheating-detected">
+        ⚠️ PERINGATAN: Aktivitas mencurigakan terdeteksi! Ulangan akan dikumpulkan secara otomatis.
+    </div>
+    
+    <!-- Peringatan Layar Penuh -->
+    <div id="fullscreen-warning" class="fullscreen-warning">
+        <h2>ULANGAN HARIAN</h2>
+        <p>Ulangan ini harus dikerjakan dalam mode layar penuh. Klik tombol di bawah untuk melanjutkan.</p>
+        <button id="enter-fullscreen-btn" class="btn">MASUK KE MODE ULANGAN</button>
+    </div>
+    
+    <!-- Container Utama -->
+    <div class="container">
+        <!-- Halaman Awal -->
+        <div id="start-page">
+            <div class="header">
+                <img src="logo.png" alt="Logo Sekolah" class="school-logo">
+                <h1 class="school-name">SMA NEGERI 5 TANAH PUTIH</h1>
+                <h2 class="school-location">KABUPATEN ROKAN HILIR</h2>
+                <div style="margin-top: 15px;">
+                    <h3 style="color: #d32f2f; font-size: 22px;">ULANGAN HARIAN SEJARAH</h3>
+                    <p style="font-size: 18px; color: #555; margin-top: 10px;">Proses Masuk dan Berkembangnya Hindu-Buddha di Indonesia & Kerajaan Sunda</p>
+                </div>
+            </div>
+            
+            <div class="section-title">TATA CARA PENGERJAAN</div>
+            
+            <div class="info-box">
+                <h3>Petunjuk Umum:</h3>
+                <ul>
+                    <li>Ulangan ini terdiri dari 15 soal pilihan ganda.</li>
+                    <li>Waktu pengerjaan: <strong>13 menit 45 detik</strong>.</li>
+                    <li>Pilih jawaban dengan mengklik pilihan yang tersedia.</li>
+                    <li>Setelah memilih jawaban, Anda dapat melanjutkan ke soal berikutnya.</li>
+                    <li>Anda dapat kembali ke soal sebelumnya untuk mengubah jawaban selama waktu masih tersedia.</li>
+                    <li>Setelah waktu habis, ulangan akan dikumpulkan secara otomatis.</li>
+                </ul>
+            </div>
+            
+            <div class="warning-box">
+                <h3>⚠️ PERINGATAN PENTING:</h3>
+                <ul>
+                    <li>Ulangan ini akan berjalan dalam mode layar penuh.</li>
+                    <li>Anda <strong>tidak dapat</strong> menyalin teks atau gambar dari halaman ini.</li>
+                    <li>Jika Anda membuka tab atau aplikasi lain, ulangan akan berhenti dan dikumpulkan secara otomatis.</li>
+                    <li>Jika terdeteksi upaya kecurangan, ulangan akan segera dikumpulkan dan dinilai.</li>
+                    <li>Hasil ulangan akan dicatat dan dikirim ke guru secara otomatis.</li>
+                </ul>
+            </div>
+            
+            <div class="section-title">DATA PESERTA</div>
+            
+            <form id="student-form">
+                <div class="form-group">
+                    <label for="student-name">Nama Lengkap:</label>
+                    <input type="text" id="student-name" class="form-control" placeholder="Masukkan nama lengkap" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="student-class">Kelas:</label>
+                    <select id="student-class" class="form-control" required>
+                        <option value="">Pilih Kelas</option>
+                        <option value="10 Satu">10 Satu</option>
+                        <option value="10 Dua">10 Dua</option>
+                        <option value="10 Tiga">10 Tiga</option>
+                        <option value="10 Empat">10 Empat</option>
+                        <option value="11 Satu">11 Satu</option>
+                        <option value="11 Dua">11 Dua</option>
+                        <option value="11 Tiga">11 Tiga</option>
+                        <option value="12 Satu">12 Satu</option>
+                        <option value="12 Dua">12 Dua</option>
+                        <option value="12 Tiga">12 Tiga</option>
+                    </select>
+                </div>
+                
+                <div class="checkbox-container">
+                    <input type="checkbox" id="honor-statement" required>
+                    <label for="honor-statement" style="color: #d32f2f; font-weight: 600;">
+                        Saya menyatakan akan mengerjakan ulangan ini dengan jujur dan tanpa bantuan pihak lain.
+                        Saya memahami bahwa jika melanggar, ulangan saya akan dinyatakan tidak valid.
+                    </label>
+                </div>
+                
+                <button type="button" id="start-exam-btn" class="btn btn-start">MULAI ULANGAN</button>
+            </form>
+        </div>
+        
+        <!-- Halaman Soal -->
+        <div id="exam-page" class="question-container">
+            <div class="timer-container">
+                <div>WAKTU TERSISA: <span id="timer">13:45</span></div>
+            </div>
+            
+            <div class="question-indicators" id="question-indicators">
+                <!-- Indikator nomor soal akan diisi oleh JavaScript -->
+            </div>
+            
+            <div id="current-question">
+                <!-- Soal akan diisi oleh JavaScript -->
+            </div>
+            
+            <div class="navigation">
+                <button id="prev-btn" class="btn btn-nav">← Soal Sebelumnya</button>
+                <div>
+                    <button id="finish-btn" class="btn btn-nav btn-finish">Kumpulkan Ulangan</button>
+                </div>
+                <button id="next-btn" class="btn btn-nav">Soal Berikutnya →</button>
+            </div>
+        </div>
+        
+        <!-- Halaman Hasil -->
+        <div id="results-page" class="results-container">
+            <h2 class="results-title">HASIL ULANGAN HARIAN</h2>
+            
+            <div class="score-circle">
+                <div class="score-inner">
+                    <div class="score-value" id="final-score">0</div>
+                    <div class="score-label">NILAI</div>
+                </div>
+            </div>
+            
+            <div class="results-details">
+                <div class="result-box">
+                    <h3>Jawaban Benar</h3>
+                    <div class="result-value" id="correct-answers">0</div>
+                    <div class="result-label">dari 15 soal</div>
+                </div>
+                
+                <div class="result-box">
+                    <h3>Waktu</h3>
+                    <div class="result-value" id="time-used">0:00</div>
+                    <div class="result-label">dari 13:45</div>
+                </div>
+                
+                <div class="result-box">
+                    <h3>Status</h3>
+                    <div class="result-value" id="exam-status">SELESAI</div>
+                    <div class="result-label" id="submission-status">Terkumpul</div>
+                </div>
+            </div>
+            
+            <div style="margin: 40px 0; text-align: left; background-color: #f5f5f5; padding: 25px; border-radius: 15px;">
+                <h3 style="color: #1a237e; margin-bottom: 15px;">📋 Catatan:</h3>
+                <p style="line-height: 1.6; margin-bottom: 10px;">• Hasil ulangan telah tercatat dan dikirim ke guru.</p>
+                <p style="line-height: 1.6; margin-bottom: 10px;">• Nilai akhir dihitung berdasarkan jumlah jawaban benar (setiap soal bernilai 6.67 poin).</p>
+                <p style="line-height: 1.6; margin-bottom: 10px;">• Anda dapat menyimpan hasil ulangan ini sebagai PDF dengan menekan tombol di bawah.</p>
+                <p style="line-height: 1.6;">• Detail lengkap hasil ulangan akan diberikan oleh guru pada pertemuan berikutnya.</p>
+            </div>
+            
+            <div style="display: flex; gap: 20px; justify-content: center; margin-bottom: 30px; flex-wrap: wrap;">
+                <button id="save-pdf-btn" class="btn">Simpan sebagai PDF</button>
+                <button id="return-home-btn" class="btn">Kembali ke Menu Utama</button>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            © 2026 Daniel Riadi Sianipar - Guru Sejarah SMA Negeri 5 Tanah Putih
+        </div>
+    </div>
+
+    <script>
+        // Data soal (akan diacak urutannya)
+        const questions = [
+            {
+                id: 1,
+                question: "Teori masuknya Hindu-Buddha ke Indonesia yang menyatakan bahwa peran aktif dalam penyebaran agama dan kebudayaan dilakukan oleh kaum brahmana (pendeta) atas undangan penguasa lokal dinamakan teori...",
+                options: ["Waisya", "Ksatria", "Brahmana", "Arus Balik", "Sudra"],
+                correctAnswer: 2, // Indeks 2 = "Brahmana"
+                studentAnswer: null,
+                timeSpent: 0
+            },
+            {
+                id: 2,
+                question: "Salah satu bukti kuat yang mendukung teori Brahmana adalah...",
+                options: [
+                    "Banyaknya prasasti berbahasa Sanskerta dan huruf Pallawa.",
+                    "Adanya penemuan arca-arca dewa-dewi India.",
+                    "Penggunaan sistem kasta dalam masyarakat.",
+                    "Ditemukannya candi-candi bercorak Hindu.",
+                    "Munculnya kerajaan-kerajaan bercorak Hindu-Buddha."
+                ],
+                correctAnswer: 0,
+                studentAnswer: null,
+                timeSpent: 0
+            },
+            {
+                id: 3,
+                question: 'Teori "Arus Balik" yang dikemukakan oleh F.D.K. Bosch menekankan pada peran...',
+                options: [
+                    "Pedagang India yang menetap dan menikah dengan penduduk lokal.",
+                    "Bangsa Indonesia sendiri yang aktif belajar ke India dan kembali menyebarkan ilmunya.",
+                    "Kaum ksatria India yang kalah perang lalu mengungsi ke Nusantara.",
+                    "Para brahmana yang diundang secara khusus untuk menobatkan raja.",
+                    "Misionaris agama Buddha dari India yang menyebarkan ajaran."
+                ],
+                correctAnswer: 1,
+                studentAnswer: null,
+                timeSpent: 0
+            },
+            {
+                id: 4,
+                question: "Salah satu perubahan signifikan dalam kehidupan politik masyarakat Indonesia setelah masuknya pengaruh Hindu-Buddha adalah...",
+                options: [
+                    "Sistem pemerintahan kesukuan digantikan oleh sistem kerajaan (monarki).",
+                    "Munculnya demokrasi langsung di tingkat desa.",
+                    "Kekuasaan dipegang sepenuhnya oleh dewan perang.",
+                    "Pemimpin dipilih berdasarkan kekayaan dan kepemilikan tanah.",
+                    "Sistem pemerintahan menjadi teokrasi yang dipimpin oleh pendeta."
+                ],
+                correctAnswer: 0,
+                studentAnswer: null,
+                timeSpent: 0
+            },
+            {
+                id: 5,
+                question: "Dalam bidang ekonomi, masuknya pengaruh Hindu-Buddha memperkuat kegiatan...",
+                options: [
+                    "Pertanian subsisten di pedalaman.",
+                    "Perburuan dan meramu.",
+                    "Pelayaran dan perdagangan antarpulau serta internasional.",
+                    "Industri manufaktur berskala besar.",
+                    "Ekonomi barter dalam skala kecil."
+                ],
+                correctAnswer: 2,
+                studentAnswer: null,
+                timeSpent: 0
+            },
+            {
+                id: 6,
+                question: "Walaupun pengaruh Hindu-Buddha kuat, unsur-unsur kebudayaan asli Indonesia (lokal) tetap bertahan dan berakulturasi. Hal ini dapat dilihat dari...",
+                options: [
+                    "Bentuk candi seperti Prambanan dan Borobudur yang memiliki unsur punden berundak.",
+                    "Penggunaan bahasa Sanskerta secara penuh menggantikan bahasa lokal.",
+                    "Penghapusan sistem kepercayaan animisme dan dinamisme.",
+                    "Raja dianggap sebagai titisan dewa secara mutlak tanpa syarat.",
+                    "Seluruh sistem hukum adat diganti dengan kitab hukum Manu."
+                ],
+                correctAnswer: 0,
+                studentAnswer: null,
+                timeSpent: 0
+            },
+            {
+                id: 7,
+                question: "Sistem sosial yang dibawa agama Hindu adalah sistem kasta (caturwarna). Namun dalam penerapannya di Indonesia, sistem kasta tidak seketat di India karena...",
+                options: [
+                    "Pengaruh Buddha yang menentang sistem kasta lebih kuat.",
+                    "Masyarakat Indonesia sudah memiliki stratifikasi sosial sendiri yang berakulturasi.",
+                    "Kaum brahmana dari India melonggarkan aturannya.",
+                    "Semua kasta memiliki hak yang sama dalam politik.",
+                    "Sistem kasta hanya berlaku untuk kaum imigran India."
+                ],
+                correctAnswer: 1,
+                studentAnswer: null,
+                timeSpent: 0
+            },
+            {
+                id: 8,
+                question: "Kerajaan Sunda yang bercorak Hindu berkembang di wilayah Jawa Barat dengan ibu kota yang terkenal, yaitu...",
+                options: ["Sundapura", "Pakuan Pajajaran", "Kawali", "Galuh", "Batutulis"],
+                correctAnswer: 1,
+                studentAnswer: null,
+                timeSpent: 0
+            },
+            {
+                id: 9,
+                question: "Raja Kerajaan Sunda yang paling terkenal dan dianggap mencapai puncak kejayaan, serta disebutkan dalam Prasasti Batu Tulis adalah...",
+                options: [
+                    "Prabu Siliwangi (Sri Baduga Maharaja)",
+                    "Rakeyan Jayadarma",
+                    "Niskala Wastu Kancana",
+                    "Prabu Dewa Niskala",
+                    "Sanghyang Surawisesa"
+                ],
+                correctAnswer: 0,
+                studentAnswer: null,
+                timeSpent: 0
+            },
+            {
+                id: 10,
+                question: "Salah satu bukti tertulis keberadaan Kerajaan Sunda adalah Prasasti Kebon Kopi yang ditemukan di Bogor. Prasasti ini terkenal karena terdapat...",
+                options: [
+                    "Cap dua telapak kaki gajah disertai tulisan berbahasa Melayu Kuno.",
+                    "Gambar lingga dan yoni sebagai simbol pemujaan.",
+                    "Tulisan mengenai perdagangan lada dengan Portugis.",
+                    "Silsilah raja-raja Sunda dari Galuh.",
+                    "Kutukan bagi yang melanggar peraturan kerajaan."
+                ],
+                correctAnswer: 0,
+                studentAnswer: null,
+                timeSpent: 0
+            },
+            {
+                id: 11,
+                question: "Sektor ekonomi utama yang menopang kehidupan Kerajaan Sunda adalah...",
+                options: [
+                    "Perdagangan budak dengan Tiongkok.",
+                    "Pertanian (padi dan palawija) dan perdagangan komoditas seperti lada dan garam.",
+                    "Industri perkapalan dan galangan kapal.",
+                    "Penambangan emas dan perak di pegunungan.",
+                    "Peternakan kuda dan kerbau untuk ekspor."
+                ],
+                correctAnswer: 1,
+                studentAnswer: null,
+                timeSpent: 0
+            },
+            {
+                id: 12,
+                question: "Hubungan Kerajaan Sunda dengan bangsa Eropa tercatat dalam sejarah, terutama dengan Portugis. Perjanjian Sunda-Portugal (1522) berisi tentang...",
+                options: [
+                    "Bantuan militer Portugis untuk menaklukkan Majapahit.",
+                    "Kerja sama pembangunan benteng di Sunda Kelapa dan perdagangan lada.",
+                    "Pernikahan antara raja Sunda dengan putri Portugis.",
+                    "Penyebaran agama Kristen di wilayah Sunda.",
+                    "Bantuan Portugis dalam melawan Demak."
+                ],
+                correctAnswer: 1,
+                studentAnswer: null,
+                timeSpent: 0
+            },
+            {
+                id: 13,
+                question: "Berdasarkan naskah kuno seperti Carita Parahyangan, agama yang berkembang di Kerajaan Sunda adalah...",
+                options: [
+                    "Buddha Mahayana",
+                    "Hindu aliran Siwa",
+                    "Hindu aliran Wisnu",
+                    "Kepercayaan Sunda Wiwitan yang telah berakulturasi dengan Hindu",
+                    "Islam"
+                ],
+                correctAnswer: 3,
+                studentAnswer: null,
+                timeSpent: 0
+            },
+            {
+                id: 14,
+                question: "Salah satu faktor yang menyebabkan melemahnya Kerajaan Sunda pada abad ke-16 adalah...",
+                options: [
+                    "Serangan dari Kerajaan Sriwijaya.",
+                    "Konflik internal perebutan takhta dan tekanan dari Kesultanan Banten dan Cirebon yang telah Islam.",
+                    "Letusan gunung berapi yang menghancurkan ibu kota.",
+                    "Wabah penyakit yang meluas.",
+                    "Invasi dari Kerajaan Majapahit."
+                ],
+                correctAnswer: 1,
+                studentAnswer: null,
+                timeSpent: 0
+            },
+            {
+                id: 15,
+                question: "Peninggalan sejarah Kerajaan Sunda yang berupa kompleks percandian dan menjadi situs arkeologi penting adalah...",
+                options: [
+                    "Candi Cangkuang",
+                    "Situs Batutulis",
+                    "Candi Jiwa",
+                    "Kompleks Candi Bojongmenje",
+                    "Arca Ganesha di Pasir Angin"
+                ],
+                correctAnswer: 3,
+                studentAnswer: null,
+                timeSpent: 0
+            }
+        ];
+
+        // Variabel global
+        let examQuestions = [];
+        let currentQuestionIndex = 0;
+        let examStarted = false;
+        let timeLeft = 825; // 13 menit 45 detik = 825 detik
+        let timerInterval = null;
+        let studentName = "";
+        let studentClass = "";
+        let startTime = null;
+        let cheatingAttempts = 0;
+        let examSubmitted = false;
+        let questionStartTime = null;
+        let activityLog = [];
+        let inFullscreenMode = false;
+
+        // Fungsi untuk mengacak array
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // Fungsi untuk memulai ulangan
+        function startExam() {
+            // Validasi form
+            studentName = document.getElementById('student-name').value.trim();
+            studentClass = document.getElementById('student-class').value;
+            const honorStatement = document.getElementById('honor-statement').checked;
+            
+            if (!studentName || !studentClass || !honorStatement) {
+                alert('Harap lengkapi semua data dan centang pernyataan kejujuran!');
+                return;
+            }
+            
+            // Acak soal
+            examQuestions = shuffleArray([...questions]);
+            
+            // Reset data
+            currentQuestionIndex = 0;
+            examStarted = true;
+            timeLeft = 825;
+            cheatingAttempts = 0;
+            examSubmitted = false;
+            startTime = new Date();
+            activityLog = [];
+            questionStartTime = new Date();
+            
+            // Log aktivitas
+            logActivity(`Ulangan dimulai oleh ${studentName} (${studentClass})`);
+            
+            // Tampilkan peringatan layar penuh
+            document.getElementById('fullscreen-warning').style.display = 'flex';
+            
+            // Sembunyikan halaman awal
+            document.getElementById('start-page').style.display = 'none';
+        }
+
+        // Fungsi untuk masuk ke mode layar penuh
+        function enterFullscreen() {
+            const elem = document.documentElement;
+            
+            // Coba metode yang berbeda untuk browser yang berbeda
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.webkitRequestFullscreen) { /* Safari */
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) { /* IE11 */
+                elem.msRequestFullscreen();
+            }
+            
+            // Set flag bahwa kita dalam mode layar penuh
+            inFullscreenMode = true;
+            
+            // Sembunyikan peringatan
+            document.getElementById('fullscreen-warning').style.display = 'none';
+            
+            // Tampilkan halaman soal
+            document.getElementById('exam-page').style.display = 'block';
+            
+            // Mulai timer
+            startTimer();
+            
+            // Tampilkan soal pertama
+            showQuestion(currentQuestionIndex);
+            
+            // Cegah copy-paste
+            preventCopyPaste();
+            
+            // Deteksi upaya kecurangan
+            setupCheatingDetection();
+            
+            // Log aktivitas
+            logActivity('Mode layar penuh diaktifkan');
+        }
+
+        // Fungsi untuk mencegah copy-paste
+        function preventCopyPaste() {
+            // Nonaktifkan konteks menu (klik kanan)
+            document.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+                logActivity('Klik kanan diblokir');
+            });
+            
+            // Nonaktifkan copy (Ctrl+C)
+            document.addEventListener('copy', function(e) {
+                e.preventDefault();
+                logActivity('Upaya copy diblokir');
+                cheatingAttempts++;
+                if (cheatingAttempts >= 3) {
+                    autoSubmitExam('Terlalu banyak upaya copy-paste');
+                }
+            });
+            
+            // Nonaktifkan cut (Ctrl+X)
+            document.addEventListener('cut', function(e) {
+                e.preventDefault();
+                logActivity('Upaya cut diblokir');
+                cheatingAttempts++;
+                if (cheatingAttempts >= 3) {
+                    autoSubmitExam('Terlalu banyak upaya cut-paste');
+                }
+            });
+            
+            // Nonaktifkan paste (Ctrl+V)
+            document.addEventListener('paste', function(e) {
+                e.preventDefault();
+                logActivity('Upaya paste diblokir');
+                cheatingAttempts++;
+                if (cheatingAttempts >= 3) {
+                    autoSubmitExam('Terlalu banyak upaya paste');
+                }
+            });
+            
+            // Cegah drag-and-drop
+            document.addEventListener('dragstart', function(e) {
+                e.preventDefault();
+            });
+            
+            document.addEventListener('drop', function(e) {
+                e.preventDefault();
+                logActivity('Upaya drop diblokir');
+            });
+        }
+
+        // Fungsi untuk mendeteksi upaya kecurangan
+        function setupCheatingDetection() {
+            // Deteksi perubahan visibility (tab/window)
+            document.addEventListener('visibilitychange', function() {
+                if (document.hidden && examStarted && !examSubmitted) {
+                    logActivity('Tab/window disembunyikan');
+                    cheatingAttempts++;
+                    showCheatingWarning();
+                    
+                    if (cheatingAttempts >= 2) {
+                        autoSubmitExam('Terdeteksi meninggalkan halaman ulangan');
+                    }
+                }
+            });
+            
+            // Deteksi resize (mungkin developer tools dibuka)
+            window.addEventListener('resize', function() {
+                if (examStarted && !examSubmitted) {
+                    // Jika perubahan ukuran window signifikan
+                    logActivity('Window di-resize, kemungkinan developer tools dibuka');
+                    cheatingAttempts++;
+                    
+                    if (cheatingAttempts >= 3) {
+                        autoSubmitExam('Terdeteksi aktivitas mencurigakan (resize berulang)');
+                    }
+                }
+            });
+            
+            // Deteksi keyboard shortcut untuk developer tools (F12, Ctrl+Shift+I, dll)
+            document.addEventListener('keydown', function(e) {
+                // F12
+                if (e.keyCode === 123) {
+                    e.preventDefault();
+                    logActivity('Upaya membuka developer tools (F12) diblokir');
+                    cheatingAttempts++;
+                    showCheatingWarning();
+                    return false;
+                }
+                
+                // Ctrl+Shift+I
+                if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
+                    e.preventDefault();
+                    logActivity('Upaya membuka developer tools (Ctrl+Shift+I) diblokir');
+                    cheatingAttempts++;
+                    showCheatingWarning();
+                    return false;
+                }
+                
+                // Ctrl+Shift+J
+                if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
+                    e.preventDefault();
+                    logActivity('Upaya membuka developer tools (Ctrl+Shift+J) diblokir');
+                    cheatingAttempts++;
+                    showCheatingWarning();
+                    return false;
+                }
+                
+                // Ctrl+Shift+C
+                if (e.ctrlKey && e.shiftKey && e.keyCode === 67) {
+                    e.preventDefault();
+                    logActivity('Upaya membuka developer tools (Ctrl+Shift+C) diblokir');
+                    cheatingAttempts++;
+                    showCheatingWarning();
+                    return false;
+                }
+                
+                // Ctrl+U (view source)
+                if (e.ctrlKey && e.keyCode === 85) {
+                    e.preventDefault();
+                    logActivity('Upaya melihat source (Ctrl+U) diblokir');
+                    cheatingAttempts++;
+                    showCheatingWarning();
+                    return false;
+                }
+            });
+        }
+
+        // Fungsi untuk menampilkan peringatan kecurangan
+        function showCheatingWarning() {
+            const warning = document.getElementById('cheating-warning');
+            warning.style.display = 'block';
+            
+            // Sembunyikan setelah 5 detik
+            setTimeout(() => {
+                warning.style.display = 'none';
+            }, 5000);
+        }
+
+        // Fungsi untuk mengirim ulangan secara otomatis karena kecurangan
+        function autoSubmitExam(reason) {
+            if (examSubmitted) return;
+            
+            logActivity(`Ulangan dikumpulkan otomatis: ${reason}`);
+            alert(`⚠️ ULANGAN DIKUMPULKAN SECARA OTOMATIS!\nAlasan: ${reason}`);
+            submitExam(true);
+        }
+
+        // Fungsi untuk memulai timer
+        function startTimer() {
+            updateTimerDisplay();
+            
+            timerInterval = setInterval(function() {
+                timeLeft--;
+                updateTimerDisplay();
+                
+                // Catat waktu yang dihabiskan untuk soal saat ini
+                if (questionStartTime) {
+                    const now = new Date();
+                    const timeSpent = Math.floor((now - questionStartTime) / 1000);
+                    examQuestions[currentQuestionIndex].timeSpent += timeSpent;
+                    questionStartTime = now;
+                }
+                
+                // Jika waktu habis
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    alert('Waktu pengerjaan telah habis! Ulangan akan dikumpulkan.');
+                    submitExam(false);
+                }
+            }, 1000);
+        }
+
+        // Fungsi untuk memperbarui tampilan timer
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            document.getElementById('timer').textContent = 
+                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            // Ubah warna jika waktu hampir habis
+            const timerElement = document.getElementById('timer');
+            if (timeLeft < 60) {
+                timerElement.style.color = '#ff5252';
+            } else if (timeLeft < 180) {
+                timerElement.style.color = '#ff9800';
+            } else {
+                timerElement.style.color = 'white';
+            }
+        }
+
+        // Fungsi untuk menampilkan soal
+        function showQuestion(index) {
+            if (index < 0 || index >= examQuestions.length) return;
+            
+            // Perbarui waktu untuk soal sebelumnya
+            if (questionStartTime && currentQuestionIndex !== index) {
+                const now = new Date();
+                const timeSpent = Math.floor((now - questionStartTime) / 1000);
+                examQuestions[currentQuestionIndex].timeSpent += timeSpent;
+            }
+            
+            currentQuestionIndex = index;
+            questionStartTime = new Date();
+            
+            const question = examQuestions[index];
+            
+            // Tampilkan soal
+            const questionHTML = `
+                <div class="question-number">SOAL ${index + 1} / ${examQuestions.length}</div>
+                <div class="question-text">${question.question}</div>
+                <div class="options-container">
+                    ${question.options.map((option, i) => `
+                        <div class="option ${question.studentAnswer === i ? 'selected' : ''}" 
+                             data-index="${i}" onclick="selectAnswer(${i})">
+                            ${String.fromCharCode(65 + i)}. ${option}
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            
+            document.getElementById('current-question').innerHTML = questionHTML;
+            
+            // Perbarui indikator soal
+            updateQuestionIndicators();
+            
+            // Perbarui tombol navigasi
+            document.getElementById('prev-btn').disabled = index === 0;
+            document.getElementById('prev-btn').className = index === 0 ? 
+                'btn btn-nav btn-disabled' : 'btn btn-nav';
+                
+            document.getElementById('next-btn').disabled = index === examQuestions.length - 1;
+            document.getElementById('next-btn').className = index === examQuestions.length - 1 ? 
+                'btn btn-nav btn-disabled' : 'btn btn-nav';
+        }
+
+        // Fungsi untuk memilih jawaban
+        function selectAnswer(answerIndex) {
+            examQuestions[currentQuestionIndex].studentAnswer = answerIndex;
+            
+            // Perbarui tampilan
+            const options = document.querySelectorAll('.option');
+            options.forEach(option => option.classList.remove('selected'));
+            options[answerIndex].classList.add('selected');
+            
+            // Perbarui indikator
+            updateQuestionIndicators();
+            
+            // Log aktivitas
+            logActivity(`Memilih jawaban untuk soal ${currentQuestionIndex + 1}: ${String.fromCharCode(65 + answerIndex)}`);
+        }
+
+        // Fungsi untuk memperbarui indikator soal
+        function updateQuestionIndicators() {
+            const indicatorsContainer = document.getElementById('question-indicators');
+            let indicatorsHTML = '';
+            
+            examQuestions.forEach((question, index) => {
+                let indicatorClass = 'indicator';
+                if (index === currentQuestionIndex) indicatorClass += ' current';
+                if (question.studentAnswer !== null) indicatorClass += ' answered';
+                
+                indicatorsHTML += `
+                    <div class="${indicatorClass}" onclick="goToQuestion(${index})">
+                        ${index + 1}
+                    </div>
+                `;
+            });
+            
+            indicatorsContainer.innerHTML = indicatorsHTML;
+        }
+
+        // Fungsi untuk pindah ke soal tertentu
+        function goToQuestion(index) {
+            if (index >= 0 && index < examQuestions.length) {
+                showQuestion(index);
+            }
+        }
+
+        // Fungsi untuk mencatat aktivitas
+        function logActivity(activity) {
+            const timestamp = new Date().toISOString();
+            activityLog.push(`${timestamp}: ${activity}`);
+            
+            // Batasi log agar tidak terlalu besar
+            if (activityLog.length > 50) {
+                activityLog = activityLog.slice(-50);
+            }
+        }
+
+        // Fungsi untuk mengumpulkan ulangan
+        function submitExam(isAutoSubmit = false) {
+            if (examSubmitted) return;
+            
+            clearInterval(timerInterval);
+            examSubmitted = true;
+            
+            // Hitung waktu yang digunakan
+            const endTime = new Date();
+            const timeUsed = Math.floor((endTime - startTime) / 1000);
+            const timeUsedFormatted = `${Math.floor(timeUsed / 60)}:${(timeUsed % 60).toString().padStart(2, '0')}`;
+            
+            // Hitung jawaban benar
+            let correctCount = 0;
+            examQuestions.forEach(question => {
+                if (question.studentAnswer === question.correctAnswer) {
+                    correctCount++;
+                }
+            });
+            
+            // Hitung nilai (setiap soal bernilai 100/15 ≈ 6.67 poin)
+            const score = Math.round((correctCount / examQuestions.length) * 100 * 100) / 100;
+            
+            // Siapkan data untuk dikirim ke Google Sheets
+            const studentAnswers = examQuestions.map(q => 
+                q.studentAnswer !== null ? String.fromCharCode(65 + q.studentAnswer) : '-'
+            ).join(', ');
+            
+            const timePerQuestion = examQuestions.map(q => q.timeSpent).join(', ');
+            
+            const submissionData = {
+                timestamp: new Date().toISOString(),
+                nama: studentName,
+                kelas: studentClass,
+                nilai: score,
+                benar: correctCount,
+                salah: examQuestions.length - correctCount,
+                waktu: timeUsedFormatted,
+                status: isAutoSubmit ? 'Dikumpulkan otomatis' : 'Selesai',
+                logAktivitas: activityLog.join(' | '),
+                waktuPerSoal: timePerQuestion,
+                jawabanSiswa: studentAnswers
+            };
+            
+            // Kirim data ke Google Sheets
+            sendToGoogleSheets(submissionData);
+            
+            // Tampilkan halaman hasil
+            showResults(score, correctCount, timeUsedFormatted, isAutoSubmit);
+            
+            // Keluar dari mode layar penuh
+            exitFullscreen();
+            
+            // Log aktivitas
+            logActivity(`Ulangan dikumpulkan. Nilai: ${score}, Benar: ${correctCount}/${examQuestions.length}`);
+        }
+
+        // Fungsi untuk mengirim data ke Google Sheets
+        function sendToGoogleSheets(data) {
+            // URL Google Apps Script Web App
+            // GANTI URL_INI dengan URL Google Apps Script Anda
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbyMxIO36y7ZJgTpx9G-JR3l8sOVoAHf4M-B6TrYjQqrzjeDvyV9C_J_n2fBqp27kUaK/exec';
+            
+            // Buat form data
+            const formData = new FormData();
+            for (const key in data) {
+                formData.append(key, data[key]);
+            }
+            
+            // Kirim data menggunakan fetch
+            fetch(scriptURL, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log('Data berhasil dikirim ke Google Sheets');
+                } else {
+                    console.error('Gagal mengirim data ke Google Sheets');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+
+        // Fungsi untuk menampilkan hasil
+        function showResults(score, correctCount, timeUsed, isAutoSubmit) {
+            // Sembunyikan halaman soal
+            document.getElementById('exam-page').style.display = 'none';
+            
+            // Tampilkan halaman hasil
+            document.getElementById('results-page').style.display = 'block';
+            
+            // Isi data hasil
+            document.getElementById('final-score').textContent = score;
+            document.getElementById('correct-answers').textContent = `${correctCount}/15`;
+            document.getElementById('time-used').textContent = timeUsed;
+            document.getElementById('exam-status').textContent = isAutoSubmit ? 'DIKUMPULKAN OTOMATIS' : 'SELESAI';
+            document.getElementById('submission-status').textContent = isAutoSubmit ? 
+                'Ulangan dikumpulkan otomatis karena terdeteksi kecurangan' : 'Ulangan berhasil dikumpulkan';
+            
+            // Warna status jika auto submit
+            if (isAutoSubmit) {
+                document.getElementById('exam-status').style.color = '#d32f2f';
+            }
+        }
+
+        // Fungsi untuk keluar dari mode layar penuh
+        function exitFullscreen() {
+            inFullscreenMode = false;
+            
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) { /* Safari */
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) { /* IE11 */
+                document.msExitFullscreen();
+            }
+        }
+
+        // Fungsi untuk menyimpan sebagai PDF
+        function saveAsPDF() {
+            window.print();
+        }
+
+        // Fungsi untuk kembali ke menu utama
+        function returnToHome() {
+            // Reset semua data
+            examQuestions = [];
+            currentQuestionIndex = 0;
+            examStarted = false;
+            timeLeft = 825;
+            examSubmitted = false;
+            cheatingAttempts = 0;
+            
+            // Hentikan timer jika masih berjalan
+            if (timerInterval) {
+                clearInterval(timerInterval);
+            }
+            
+            // Sembunyikan semua halaman kecuali halaman awal
+            document.getElementById('results-page').style.display = 'none';
+            document.getElementById('exam-page').style.display = 'none';
+            document.getElementById('start-page').style.display = 'block';
+            
+            // Reset form
+            document.getElementById('student-form').reset();
+            
+            // Log aktivitas
+            logActivity('Kembali ke menu utama');
+        }
+
+        // Event listener untuk tombol mulai
+        document.getElementById('start-exam-btn').addEventListener('click', startExam);
+        
+        // Event listener untuk tombol masuk ke mode layar penuh
+        document.getElementById('enter-fullscreen-btn').addEventListener('click', enterFullscreen);
+        
+        // Event listener untuk tombol sebelumnya
+        document.getElementById('prev-btn').addEventListener('click', function() {
+            if (currentQuestionIndex > 0) {
+                showQuestion(currentQuestionIndex - 1);
+            }
+        });
+        
+        // Event listener untuk tombol berikutnya
+        document.getElementById('next-btn').addEventListener('click', function() {
+            if (currentQuestionIndex < examQuestions.length - 1) {
+                showQuestion(currentQuestionIndex + 1);
+            }
+        });
+        
+        // Event listener untuk tombol kumpulkan
+        document.getElementById('finish-btn').addEventListener('click', function() {
+            const unanswered = examQuestions.filter(q => q.studentAnswer === null).length;
+            
+            if (unanswered > 0) {
+                const confirmSubmit = confirm(`Masih ada ${unanswered} soal yang belum dijawab. Apakah Anda yakin ingin mengumpulkan ulangan?`);
+                if (confirmSubmit) {
+                    submitExam(false);
+                }
+            } else {
+                submitExam(false);
+            }
+        });
+        
+        // Event listener untuk tombol simpan PDF
+        document.getElementById('save-pdf-btn').addEventListener('click', saveAsPDF);
+        
+        // Event listener untuk tombol kembali ke menu utama
+        document.getElementById('return-home-btn').addEventListener('click', returnToHome);
+        
+        // Deteksi ketika keluar dari mode layar penuh
+        document.addEventListener('fullscreenchange', handleFullscreenChange);
+        document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+        document.addEventListener('msfullscreenchange', handleFullscreenChange);
+        
+        function handleFullscreenChange() {
+            const isFullscreen = document.fullscreenElement || 
+                                 document.webkitFullscreenElement || 
+                                 document.msFullscreenElement;
+            
+            // Jika keluar dari mode layar penuh saat ulangan berlangsung
+            if (!isFullscreen && inFullscreenMode && examStarted && !examSubmitted) {
+                logActivity('Keluar dari mode layar penuh');
+                cheatingAttempts++;
+                showCheatingWarning();
+                
+                // Kembali ke mode layar penuh
+                setTimeout(() => {
+                    if (examStarted && !examSubmitted && !isFullscreen) {
+                        const warning = document.getElementById('fullscreen-warning');
+                        warning.style.display = 'flex';
+                        warning.innerHTML = `
+                            <h2>⚠️ MOHON KEMBALI KE MODE LAYAR PENUH</h2>
+                            <p>Ulangan harus dikerjakan dalam mode layar penuh. Klik tombol di bawah untuk melanjutkan.</p>
+                            <p style="color: #ff9800;">Peringatan: Jika kembali keluar dari mode layar penuh, ulangan akan dikumpulkan otomatis.</p>
+                            <button id="reenter-fullscreen-btn" class="btn" style="margin-top: 20px;">LANJUTKAN ULANGAN</button>
+                        `;
+                        
+                        document.getElementById('reenter-fullscreen-btn').addEventListener('click', enterFullscreen);
+                    }
+                }, 500);
+                
+                if (cheatingAttempts >= 2) {
+                    autoSubmitExam('Keluar dari mode layar penuh berulang kali');
+                }
+            }
+        }
+
+        // Log saat halaman dimuat
+        window.addEventListener('load', function() {
+            logActivity('Halaman ulangan harian dimuat');
+        });
+    </script>
+</body>
+</html>
